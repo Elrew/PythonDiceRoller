@@ -5,7 +5,8 @@ from distutils.cmd import Command
 import random
 import tkinter
 
-from tkinter import END, Button, Text, font
+from tkinter import END, TOP, Button, Text, font
+from tkinter.scrolledtext import ScrolledText
 from turtle import update, width
 
 main = tkinter.Tk()
@@ -28,15 +29,18 @@ clicked5 = tkinter.StringVar()
 clicked6 = tkinter.StringVar()
 clicked7 = tkinter.StringVar()
 
-rollbox = Text()
+# Creating the box for rolls to appear
+rollbox = ScrolledText()
 rollbox.pack(side=tkinter.TOP, anchor="n", fill="both")
+
 
 # Functions for calculating rolls
 def calculate_rollD4():
     num = int(clicked.get())
     rollcount = int(clicked.get())
     while num > 0:
-        rollbox.insert(END, f"D4 Roll {rollcount}: {random.randint(1,4)}\n"  ) 
+        rollbox.insert(END, f"D4 Roll {rollcount}: {random.randint(1,4)}\n"  )
+        rollbox.see(END) 
         num = num -1
         rollcount = rollcount - 1
 
@@ -44,7 +48,8 @@ def calculate_rollD6():
     num = int(clicked2.get())
     rollcount = int(clicked2.get())
     while num > 0:
-        rollbox.insert(END, f"D6 Roll {rollcount}: {random.randint(1,6)}\n"  ) 
+        rollbox.insert(END, f"D6 Roll {rollcount}: {random.randint(1,6)}\n"  )
+        rollbox.see(END)  
         num = num -1
         rollcount = rollcount - 1
 
@@ -52,7 +57,8 @@ def calculate_rollD8():
     num = int(clicked3.get())
     rollcount = int(clicked3.get())
     while num > 0:
-        rollbox.insert(END, f"D8 Roll {rollcount}: {random.randint(1,8)}\n"  ) 
+        rollbox.insert(END, f"D8 Roll {rollcount}: {random.randint(1,8)}\n"  )
+        rollbox.see(END)  
         num = num -1
         rollcount = rollcount - 1
 
@@ -60,19 +66,21 @@ def calculate_rollD10():
     num = int(clicked4.get())
     rollcount = int(clicked4.get())
     while num > 0:
-        rollbox.insert(END, f"D10 Roll {rollcount}: {random.randint(1,10)}\n"  ) 
+        rollbox.insert(END, f"D10 Roll {rollcount}: {random.randint(1,10)}\n"  )
+        rollbox.see(END)  
         num = num -1
         rollcount = rollcount - 1
 
 def calculate_rollD00():
     dieside = 0
-    rollbox.insert(END, f"{}" ) 
+    rollbox.insert(END, ) 
 
 def calculate_rollD12():
     num = int(clicked6.get())
     rollcount = int(clicked6.get())
     while num > 0:
-        rollbox.insert(END, f"D12 Roll {rollcount}: {random.randint(1,12)}\n"  ) 
+        rollbox.insert(END, f"D12 Roll {rollcount}: {random.randint(1,12)}\n"  )
+        rollbox.see(END)  
         num = num -1
         rollcount = rollcount - 1
 
@@ -80,7 +88,8 @@ def calculate_rollD20():
     num = int(clicked7.get())
     rollcount = int(clicked7.get())
     while num > 0:
-        rollbox.insert(END, f"D20 Roll {rollcount}: {random.randint(1,20)}\n"  ) 
+        rollbox.insert(END, f"D20 Roll {rollcount}: {random.randint(1,20)}\n"  )
+        rollbox.see(END)  
         num = num -1
         rollcount = rollcount - 1
 
@@ -159,11 +168,13 @@ buttonD20.place(bordermode=tkinter.OUTSIDE,x=605, y=410)
 
 
 # exit button
-#exit_button = ttk.Button(
-   # root,
-   # text='Exit',
-    #command=lambda: root.quit()
-#)
+exit_button = tkinter.Button(
+    main,
+    text='Exit',
+    command=lambda: main.quit()
+)
+
+exit_button.place(bordermode=tkinter.OUTSIDE,x=650, y=300)
 
 
 
