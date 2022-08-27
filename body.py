@@ -168,6 +168,11 @@ buttonD20.place(bordermode=tkinter.OUTSIDE,x=605, y=410)
 
 # Darkmode button
 
+#buttons replaced with images 
+
+#roll with advant and disadvant 
+
+
 # clear all rolls button
 
 def clear_rollbox():
