@@ -186,12 +186,6 @@ exit_button = tkinter.Button(
 
 exit_button.place(in_=rollbox, x= "647",y="350")
 clear_button.place(in_=rollbox,x= "647",y="310")
-<<<<<<< HEAD
-=======
-
-
-
-
 
 # Adding light and dark mode images
 light = tkinter.PhotoImage(file="light.png")
@@ -228,11 +222,6 @@ switch = Button(main, image=light,
 				activebackground="white",
 				command=toggle)
 switch.place(in_=rollbox,x= "647",y="270")
->>>>>>> bb5652779e1ea12e4a30871ac7101da8f8e9aabd
-
-
-
-
 
 # Adding light and dark mode images
 light = tkinter.PhotoImage(file="light.png")
