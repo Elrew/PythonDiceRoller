@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import END, TOP, Button, Text, font
 from tkinter.scrolledtext import ScrolledText
 
+# Creates Main Body Of Program
 main = tkinter.Tk()
 main.geometry("700x500")
 main.resizable(width=False,height=False)
@@ -127,8 +128,9 @@ dropdownD00.pack(side = tkinter.LEFT, anchor="s", )
 dropdownD12.pack(side = tkinter.LEFT, anchor="s", )
 dropdownD20.pack(side = tkinter.LEFT, anchor="s", )
 
-# Buttons to click to roll the die for them 
+# Settings for dice button font
 helv22 = font.Font(family='Helvetica', size=22, weight=font.BOLD)
+# Buttons to click to roll the die for them 
 buttonD4 =tkinter.Button(main, text="D4", command=calculate_rollD4, font=helv22)
 buttonD6 =tkinter.Button(main, text="D6", command=calculate_rollD6, font=helv22 )
 buttonD8 =tkinter.Button(main, text="D8", command=calculate_rollD8, font=helv22 )
@@ -154,20 +156,11 @@ buttonD00.place(bordermode=tkinter.OUTSIDE,x=409, y=408)
 buttonD12.place(bordermode=tkinter.OUTSIDE,x=507, y=408)
 buttonD20.place(bordermode=tkinter.OUTSIDE,x=605, y=408)
 
-
-# Darkmode button
-
-# buttons replaced with images 
-
-# roll with advant and disadvant 
-# rollbox font settings
-
-# clear all rolls button
-
+# Function to clear the contents of the roll output box
 def clear_rollbox():
     rollbox.delete('1.0',END)
 
-
+# Create Clear Button
 clear_button = tkinter.Button(
     main,
     text='Clear',
@@ -183,6 +176,7 @@ exit_button = tkinter.Button(
     command=lambda: main.quit()
 )
 
+# Placing clear and exit button
 exit_button.place(in_=rollbox, x= "647",y="350")
 clear_button.place(in_=rollbox,x= "647",y="310")
 
@@ -260,3 +254,9 @@ switch.place(in_=rollbox,x= "647",y="270")
 
 
 main.mainloop()
+
+
+
+# buttons replaced with images 
+
+# roll with advant and disadvant 
