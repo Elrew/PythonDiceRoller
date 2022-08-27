@@ -1,24 +1,14 @@
-from cProfile import label
-from calendar import c
-from cgitb import text
-from distutils.cmd import Command
 import random
 import tkinter
-
+from tkinter import *
 from tkinter import END, TOP, Button, Text, font
 from tkinter.scrolledtext import ScrolledText
-from turtle import update, width
+from turtle import width
 
 main = tkinter.Tk()
 main.geometry("700x500")
 main.resizable(width=False,height=False)
 main.title("Python Dice Roller")
-
-testing_thing= "This is just a test"
-
-def show():
-    label.config(text = clicked.get())
-
 
 # Used to keep each dropdown's value as it's own
 clicked = tkinter.StringVar()
@@ -30,8 +20,8 @@ clicked6 = tkinter.StringVar()
 clicked7 = tkinter.StringVar()
 
 # Creating the box for rolls to appear
-rollbox = ScrolledText()
-rollbox.pack(side=tkinter.TOP, anchor="w", fill="y")
+rollbox = ScrolledText(width=75)
+rollbox.pack(side=TOP, anchor="w",fill="y")
 
 
 # Functions for calculating rolls
@@ -157,21 +147,21 @@ buttonD10.pack(side = tkinter.LEFT, anchor="s", )
 buttonD00.pack(side = tkinter.LEFT, anchor="s", )
 buttonD12.pack(side = tkinter.LEFT, anchor="s", )
 buttonD20.pack(side = tkinter.LEFT, anchor="s", )
-buttonD4.place(bordermode=tkinter.OUTSIDE,x=15, y=410)
-buttonD6.place(bordermode=tkinter.OUTSIDE,x=115, y=410)
-buttonD8.place(bordermode=tkinter.OUTSIDE,x=220, y=410)
-buttonD10.place(bordermode=tkinter.OUTSIDE,x=310, y=410)
-buttonD00.place(bordermode=tkinter.OUTSIDE,x=409, y=410)
-buttonD12.place(bordermode=tkinter.OUTSIDE,x=507, y=410)
-buttonD20.place(bordermode=tkinter.OUTSIDE,x=605, y=410)
+buttonD4.place(bordermode=tkinter.OUTSIDE,x=15, y=408)
+buttonD6.place(bordermode=tkinter.OUTSIDE,x=115, y=408)
+buttonD8.place(bordermode=tkinter.OUTSIDE,x=220, y=408)
+buttonD10.place(bordermode=tkinter.OUTSIDE,x=310, y=408)
+buttonD00.place(bordermode=tkinter.OUTSIDE,x=409, y=408)
+buttonD12.place(bordermode=tkinter.OUTSIDE,x=507, y=408)
+buttonD20.place(bordermode=tkinter.OUTSIDE,x=605, y=408)
 
 
 # Darkmode button
 
-#buttons replaced with images 
+# buttons replaced with images 
 
-#roll with advant and disadvant 
-
+# roll with advant and disadvant 
+# rollbox font settings
 
 # clear all rolls button
 
@@ -195,7 +185,47 @@ exit_button = tkinter.Button(
 )
 
 exit_button.place(in_=rollbox, x= "647",y="350")
-clear_button.place(in_=rollbox,x= "647")
+clear_button.place(in_=rollbox,x= "647",y="310")
+
+
+
+
+
+# Adding light and dark mode images
+light = tkinter.PhotoImage(file="light.png")
+dark = tkinter.PhotoImage(file="dark.png")
+
+switch_value = True
+
+# Defining a function to toggle
+# between light and dark theme
+def toggle():
+
+	global switch_value
+	if switch_value == True:
+		switch.config(image=dark, bg="#26242f",
+					activebackground="#26242f")
+		rollbox.config(bg="#26242f", fg="white")
+		# Changes the window to dark theme
+		main.config(bg="#26242f")
+		switch_value = False
+
+	else:
+		switch.config(image=light, bg="white",
+					activebackground="white")
+		rollbox.config(bg="white", fg="black")
+		# Changes the window to light theme
+		main.config(bg="white")
+		switch_value = True
+
+
+# Creating a button to toggle
+# between light and dark themes
+switch = Button(main, image=light,
+				bd=0, bg="white",
+				activebackground="white",
+				command=toggle)
+switch.place(in_=rollbox,x= "647",y="270")
 
 
 main.mainloop()
