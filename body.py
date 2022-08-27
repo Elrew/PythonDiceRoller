@@ -3,7 +3,6 @@ import tkinter
 from tkinter import *
 from tkinter import END, TOP, Button, Text, font
 from tkinter.scrolledtext import ScrolledText
-from turtle import width
 
 main = tkinter.Tk()
 main.geometry("700x500")
