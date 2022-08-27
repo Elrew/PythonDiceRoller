@@ -11,7 +11,7 @@ from turtle import update, width
 
 main = tkinter.Tk()
 main.geometry("700x500")
-main.resizable(width=False, height=False)
+main.resizable(width=False,height=False)
 main.title("Python Dice Roller")
 
 testing_thing= "This is just a test"
@@ -31,7 +31,7 @@ clicked7 = tkinter.StringVar()
 
 # Creating the box for rolls to appear
 rollbox = ScrolledText()
-rollbox.pack(side=tkinter.TOP, anchor="n", fill="both")
+rollbox.pack(side=tkinter.TOP, anchor="w", fill="y")
 
 
 # Functions for calculating rolls
@@ -72,8 +72,13 @@ def calculate_rollD10():
         rollcount = rollcount - 1
 
 def calculate_rollD00():
-    dieside = 0
-    rollbox.insert(END, ) 
+    num = int(clicked5.get())
+    rollcount = int(clicked5.get())
+    while num > 0:
+        rollbox.insert(END, f"D00 Roll {rollcount}: {random.randint(1,10)}0\n"  )
+        rollbox.see(END)  
+        num = num -1
+        rollcount = rollcount - 1
 
 def calculate_rollD12():
     num = int(clicked6.get())
@@ -163,19 +168,29 @@ buttonD20.place(bordermode=tkinter.OUTSIDE,x=605, y=410)
 
 # Darkmode button
 
-# clear all rolls buton
+# clear all rolls button
+
+def clear_rollbox():
+    rollbox.delete('1.0',END)
 
 
+clear_button = tkinter.Button(
+    main,
+    text='Clear',
+    width="6",
+    command=clear_rollbox
+)
 
 # exit button
 exit_button = tkinter.Button(
     main,
     text='Exit',
+    width="6",
     command=lambda: main.quit()
 )
 
-exit_button.place(bordermode=tkinter.OUTSIDE,x=650, y=300)
-
+exit_button.place(in_=rollbox, x= "647",y="350")
+clear_button.place(in_=rollbox,x= "647")
 
 
 main.mainloop()
